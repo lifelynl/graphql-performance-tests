@@ -1,0 +1,18 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    ["module-resolver", {
+      "root": ["."],
+      "alias": {
+        "~": "./dist/app"
+      }
+    }]
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "lib": ["esnext"],
+    "outDir": "dist/",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"]
+    }
+  },
+  "exclude": [
+    "node_modules/",
+    "dist/"
+  ]
+}
