@@ -9,12 +9,12 @@ export class Airport extends BaseEntity {
     @Column()
     public name: string
 
-    @OneToMany(type => Flight, flight => flight.sourceAirport)
+    @OneToMany(type => Flight, flight => flight.departureAirport)
     @JoinColumn()
-    public outgoingFlights: Flight[]
+    public departureFlights: Flight[]
 
-    @OneToMany(type => Flight, flight => flight.destinationAirport)
+    @OneToMany(type => Flight, flight => flight.arrivalAirport)
     @JoinColumn()
-    public incomingFlights: Flight[]
+    public arrivalFlights: Flight[]
 
 }

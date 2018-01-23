@@ -1,4 +1,3 @@
-import chalk from 'chalk'
 import { Request } from 'express'
 import { graphqlExpress } from 'apollo-server-express'
 
@@ -6,7 +5,6 @@ import { schema } from '~/http/graphql'
 import { graphQLErrorHandler } from '~/http/graphql/errors/graphQLErrorHandler'
 import { createDataLoaders, Loaders } from '~/utils/createDataLoaders'
 import { config } from '~/config'
-import { log } from '~/framework'
 
 export type Context = {} & Loaders
 
@@ -15,13 +13,7 @@ export const graphQLHandler = graphqlExpress(async (request: Request) => {
         ...createDataLoaders()
     }
 
-    log().info('')
-    log().info('')
-    log().info('')
-    log().info('GraphQL request:', chalk.grey(request.body.query) as any)
-    log().info('')
-    log().info('')
-    log().info('')
+    process.stdout.write('\x1B[2J\x1B[0f\u001b[0;0H')
 
     return {
         schema: schema,

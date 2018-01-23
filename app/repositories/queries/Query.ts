@@ -2,7 +2,6 @@ import { snakeCase } from 'lodash'
 import { GraphQLResolveInfo } from 'graphql'
 import { SelectQueryBuilder, Repository, Connection, QueryRunner } from 'typeorm'
 
-import { log } from '~/framework'
 import { RelationsTree, findRelationsTree } from '~/utils/graphql/findRelationsTree'
 
 export interface GraphQLInfoOptions {
@@ -36,8 +35,6 @@ export abstract class Query<Entity> extends SelectQueryBuilder<Entity> {
 
     public joinFromGraphQLInfo(info: GraphQLResolveInfo, options: GraphQLInfoOptions = {}): this {
         const tree = findRelationsTree(this.repository.metadata, info, options)
-
-        log().debug('Joining relations that were computed from the GraphQL AST', tree)
 
         return this.loadRelationsTree(tree, tree.name)
     }

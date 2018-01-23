@@ -12,8 +12,6 @@ export const passengerType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLInt },
         name: { type: GraphQLString },
-        flights: {
-            type: new GraphQLList(flightType)
-        }
+        flights: { type: new GraphQLList(flightType) },
     })
 })

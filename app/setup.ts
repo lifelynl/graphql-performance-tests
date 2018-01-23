@@ -25,9 +25,9 @@ export const setupDatabase = async () => {
 
         for (let i = 0; i < 3; i++) {
             await getFlightRepository().save(await new Flight({
-                name: `ABXYZ${i}`,
-                sourceAirport: schiphol,
-                destinationAirport: heathrow,
+                name: `AC1${i}`,
+                departureAirport: schiphol,
+                arrivalAirport: heathrow,
                 passengers
             }))
         }

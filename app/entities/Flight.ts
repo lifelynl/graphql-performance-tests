@@ -10,13 +10,13 @@ export class Flight extends BaseEntity {
     @Column()
     public name: string
 
-    @ManyToOne(type => Airport, airport => airport.outgoingFlights)
+    @ManyToOne(type => Airport, airport => airport.departureFlights)
     @JoinColumn()
-    public sourceAirport: Airport
+    public departureAirport: Airport
 
-    @ManyToOne(type => Airport, airport => airport.incomingFlights)
+    @ManyToOne(type => Airport, airport => airport.arrivalFlights)
     @JoinColumn()
-    public destinationAirport: Airport
+    public arrivalAirport: Airport
 
     @ManyToMany(type => Passenger)
     @JoinTable({ name: 'flight_has_passengers' })
@@ -24,9 +24,9 @@ export class Flight extends BaseEntity {
 
     // Below are two fields that are not necessary but serve their purpose for the examples given
 
-    @RelationId((flight: Flight) => flight.sourceAirport)
-    public sourceAirportId: number
+    @RelationId((flight: Flight) => flight.departureAirport)
+    public departureAirportId: number
 
-    @RelationId((flight: Flight) => flight.destinationAirport)
-    public destinationAirportId: number
+    @RelationId((flight: Flight) => flight.arrivalAirport)
+    public arrivalAirportId: number
 }
