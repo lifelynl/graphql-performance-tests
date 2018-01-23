@@ -9,7 +9,6 @@ import { airportType } from './airportType'
 import { getAirportQuery } from '~/repositories/AirportRepository'
 
 import { passengerType } from './passengerType'
-import { getPassengerQuery } from '~/repositories/PassengerRepository'
 
 import { Context } from '~/http/routes/graphQLHandler'
 
@@ -58,15 +57,7 @@ export const flightTypeV3 = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLInt },
         name: { type: GraphQLString },
-        passengers: {
-            type: new GraphQLList(passengerType),
-            resolve: flight => {
-                return getPassengerQuery()
-                    .leftJoinAndSelect('passenger.flights', 'flight')
-                    .where('flight.id = :id', { id: flight.id })
-                    .getMany()
-            }
-        },
+        passengers: { type: new GraphQLList(passengerType) },
         departureAirport: { type: airportType },
         arrivalAirport: { type: airportType },
     })
