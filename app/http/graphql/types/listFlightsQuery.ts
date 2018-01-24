@@ -8,6 +8,13 @@ import { getFlightQuery } from '~/repositories/FlightRepository'
 export const listFlightsQuery = {
     type: new GraphQLList(flightType),
     resolve: (_, args, context, info) => {
+        return getFlightQuery().getMany()
+    }
+}
+
+export const listFlightsQueryV1 = {
+    type: new GraphQLList(flightType),
+    resolve: (_, args, context, info) => {
         console.log(figlet.textSync('1. No optimisations'))
         console.log('')
 
