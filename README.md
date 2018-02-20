@@ -12,7 +12,11 @@
 
 #### Quick start
 
-Run `yarn dev-server` and `yarn dev-client` from the project's root to quickly start the development enviroment. Or run `yarn dev` to start both concurrently.
+0. `cp .env.example .env`
+1. `yarn` - Install dependencies.
+2. `yarn start-db`
+3. in separate window `yarn migrations:run`
+4. in separate window `yarn dev`
 
 ## Client
 
