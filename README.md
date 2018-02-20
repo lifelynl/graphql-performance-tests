@@ -1,4 +1,4 @@
-# Wereldhave
+# GraphQL example
 
 ## Installing ![](https://i.imgur.com/l1Vh7WJ.png)
 
